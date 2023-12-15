@@ -31,3 +31,5 @@ def filter_numbers():
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
+    if filter_type = 000:
+        return [number for number in numbers_list if number % 2 != 0]
