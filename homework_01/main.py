@@ -20,6 +20,15 @@ EVEN = "even"
 PRIME = "prime"
 
 
+def is_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+
+
 def filter_numbers(numbers_list, filter_type):
     """
     функция, которая на вход принимает список из целых чисел,
@@ -27,12 +36,16 @@ def filter_numbers(numbers_list, filter_type):
     (выбор производится передачей дополнительного аргумента)
 
     >>> filter_numbers([1, 2, 3], ODD)
-    <<< [1, 3]
+    [1, 3]
     >>> filter_numbers([2, 3, 4, 5], EVEN)
-    <<< [2, 4]
+    [2, 4]
+    >>> filter_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9], PRIME)
+    [2, 3, 5, 7]
     """
     if filter_type == ODD:
         return [number for number in numbers_list if number % 2 != 0]
     if filter_type == EVEN:
         return [number for number in numbers_list if number % 2 == 0]
-
+    else:
+        primes = list(filter(is_prime, numbers_list))
+        return primes
